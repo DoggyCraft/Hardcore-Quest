@@ -7,3 +7,9 @@ A plugin to Minecraft. To survive you gotta have wisdom.
 * Teleport to an (generated?) room. (Maybe a forest?)
 * Mute chat
 * Soundeffects
+
+##Contributors
+
+*Draco: Base Code and comments
+*Doggy: Improved Code
+*Fido: Tried to delete everything!
