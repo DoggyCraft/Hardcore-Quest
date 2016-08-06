@@ -1,0 +1,10 @@
+name: HardcoreQuest
+main: dk.doggycraft.hq.HardcoreQuest
+version: 0.0.1
+commands:
+  hardcorequest:
+    description: Description Command
+  hq:
+    description: Description command
+  quest:
+    description: Just a command
