@@ -17,6 +17,10 @@ public class Commands
 	}
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
+	//'CommandSender sender' - who sent the command
+	//'Command cmd' - the command that was executed
+	//'String Label' - the command alias that was used
+	//String[] args - an array of additional arguments, e.g. typing /hello abc def would put abc in args[0], and def in args[1]
 	{
 		Player player = null;
 		
@@ -43,7 +47,7 @@ public class Commands
 
 		// if someone types a command this will check if its the specific
 		// command /quest and the equalsIgnoreCase tells the plugin that it
-		// dosnt matter if it is written in caps or not
+		// dosn't matter if it is written in caps or not
 		if (cmd.getName().equalsIgnoreCase("Quest"))
 		{
 			// this checks if the person that sends the command is a player or
@@ -62,6 +66,8 @@ public class Commands
 			Player p = (Player) sender;
 			// sends the player that uses the command /quest a colorfull message
 			sender.sendMessage(ChatColor.YELLOW + "This is a" + ChatColor.BLUE + " colored Message");
+			// but as mentioned we redefined it to p so you can also use p so send a message 
+			p.sendMessage(ChatColor.GREEN + "This is another" + ChatColor.RED + " colored Message");
 			return true;
 		}
 
@@ -70,7 +76,10 @@ public class Commands
 	
 	public void CommandInfo(Player player)
 	{
-		// Show some info		
+		// Show some info
+		// like
+		player.sendMessage(ChatColor.YELLOW + "Contributers: Draco (Plugin base code & more) - Doggy (More code that needs to be specified) - Fido (Fucked up the code)");
+		
 	}
 
 	public void CommandReload(Player player)
