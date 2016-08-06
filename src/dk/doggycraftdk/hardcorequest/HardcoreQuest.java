@@ -1,4 +1,4 @@
-package com.doggycraftdk.hardcorequest;
+package dk.doggycraft.hardcorequest;
 //this is the package name
 
 //this is the imported libraries

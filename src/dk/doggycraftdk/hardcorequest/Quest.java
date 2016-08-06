@@ -1,4 +1,4 @@
-package com.doggycraftdk.hardcorequest;
+package dk.doggycraft.hardcorequest;
 
 import org.bukkit.event.Listener;
 
