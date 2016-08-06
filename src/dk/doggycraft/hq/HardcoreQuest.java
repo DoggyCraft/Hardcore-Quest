@@ -33,6 +33,11 @@ public class HardcoreQuest extends JavaPlugin
 	// This gets triggered once when the server starts
 	public void onEnabled()
 	{
+		// Make a command class 
+		this.commands = new Commands(this);
+		
+		this.console = this.getServer().getConsoleSender();
+
 		//this sends the message "Lets get going WO" when the server starts
 		Bukkit.getServer().getLogger().info(ChatColor.DARK_AQUA + "Lets get going WO");
 
