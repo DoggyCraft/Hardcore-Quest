@@ -1,8 +1,19 @@
 name: HardcoreQuest
 main: dk.doggycraft.hq.HardcoreQuest
 version: 0.0.1
+description: A quest where only the best players survive!
+softdepend: [Vault, PermissionsBukkit, PermissionsEx, bPermissions, GroupManager]
 commands:
   hardcorequest:
+    usage: /<command>
     description: Description Command
   hq:
+    usage: /<command>
     description: Description command
+  quest:
+    usage: /<command>
+    description: Just a command
+permissions:
+  hq.startquest:
+    description: Permission to start a quest.
+    default: false

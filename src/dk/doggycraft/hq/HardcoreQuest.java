@@ -51,8 +51,8 @@ public class HardcoreQuest extends JavaPlugin
 	// This gets triggered once when the server closes
 	public void onDisabled()
 	{
-		//this sends the message "Oh no, dont leave me..."  when the server stops
-		Bukkit.getServer().getLogger().info(ChatColor.BLUE + "Oh no, dont leave me...");			
+		//this sends the message "Oh no, don't leave me..."  when the server stops
+		Bukkit.getServer().getLogger().info(ChatColor.BLUE + "Oh no, don't leave me...");			
 	}
 	
 	public void log(String message)
@@ -87,9 +87,15 @@ public class HardcoreQuest extends JavaPlugin
 		saveConfig();
 	}
 
+	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
+	//'CommandSender sender' - who sent the command
+	//'Command cmd' - the command that was executed
+	//'String Label' - the command alias that was used
+	//String[] args - an array of additional arguments, e.g. typing /hello abc def would put abc in args[0], and def in args[1]
 	{
+		//this will send the parameters to the commands class
 		return this.commands.onCommand(sender, cmd, label, args);
 	}		
 }
