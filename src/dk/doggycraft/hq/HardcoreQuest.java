@@ -31,13 +31,16 @@ public class HardcoreQuest extends JavaPlugin
 	private Commands commands	= null;
 	
 	// This gets triggered once when the server starts
-	public void onEnabled()
+	@Override
+	public void onEnable()
 	{
 		// Make a command class 
 		this.commands = new Commands(this);
 		
 		this.console = this.getServer().getConsoleSender();
 
+		log("Plugin enabled!");
+		
 		//this sends the message "Lets get going WO" when the server starts
 		Bukkit.getServer().getLogger().info(ChatColor.DARK_AQUA + "Lets get going WO");
 

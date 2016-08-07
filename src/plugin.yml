@@ -6,5 +6,3 @@ commands:
     description: Description Command
   hq:
     description: Description command
-  quest:
-    description: Just a command
