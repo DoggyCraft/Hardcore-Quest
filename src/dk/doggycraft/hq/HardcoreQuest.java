@@ -4,6 +4,7 @@ package dk.doggycraft.hq;
 // This is the imported libraries
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -30,6 +31,8 @@ public class HardcoreQuest extends JavaPlugin
 	// The command class handles all the command. We dont want too much code in this file
 	private Commands commands	= null;
 	
+	ConsoleCommandSender consoles = Bukkit.getConsoleSender();
+	
 	// This gets triggered once when the server starts
 	@Override
 	public void onEnable()
@@ -39,20 +42,18 @@ public class HardcoreQuest extends JavaPlugin
 		
 		this.console = this.getServer().getConsoleSender();
 
-		log("Plugin enabled!");
-		
 		//this sends the message "Lets get going WO" when the server starts
-		Bukkit.getServer().getLogger().info(ChatColor.DARK_AQUA + "[HardcoreQuest] Lets get going WO");
+		consoles.sendMessage(ChatColor.DARK_AQUA + "Lets get going WO");
 
 		// This defines the variable pm to be getServer.getPluginManager(). it is not needed but if you have lots of classes its nice to just use pm instead of getServer.getPluginManager()
 		PluginManager pm = getServer().getPluginManager();
 	}
-		
+	
 	// This gets triggered once when the server closes
 	public void onDisabled()
 	{
 		//this sends the message "Oh no, don't leave me..."  when the server stops
-		Bukkit.getServer().getLogger().info(ChatColor.BLUE + "[HardcoreQuest] Oh no, don't leave me...");			
+		consoles.sendMessage(ChatColor.BLUE + "Oh no, don't leave me...");			
 	}
 	
 	public void log(String message)
