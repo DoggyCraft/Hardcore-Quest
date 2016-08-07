@@ -42,8 +42,8 @@ public class HardcoreQuest extends JavaPlugin
 		
 		this.console = this.getServer().getConsoleSender();
 
-		//this sends the message "Lets get going WO" when the server starts
-		consoles.sendMessage(ChatColor.DARK_AQUA + "Lets get going WO");
+		//this sends the message "[Hardcore Quest] Lets get going WO" when the server starts
+		consoles.sendMessage(ChatColor.DARK_AQUA + "[Hardcore Quest] Lets get going WO");
 
 		// This defines the variable pm to be getServer.getPluginManager(). it is not needed but if you have lots of classes its nice to just use pm instead of getServer.getPluginManager()
 		PluginManager pm = getServer().getPluginManager();
@@ -52,8 +52,8 @@ public class HardcoreQuest extends JavaPlugin
 	// This gets triggered once when the server closes
 	public void onDisabled()
 	{
-		//this sends the message "Oh no, don't leave me..."  when the server stops
-		consoles.sendMessage(ChatColor.BLUE + "Oh no, don't leave me...");			
+		//this sends the message "[Hardcore Quest] Oh no, don't leave me..."  when the server stops
+		consoles.sendMessage(ChatColor.BLUE + "[Hardcore Quest] Oh no, don't leave me...");			
 	}
 	
 	public void log(String message)
