@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/CloudStation/minecraft/plugins/HardcoreQuest/lib/spigot-1.9-R0.1-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="C:/CloudStation/minecraft/plugins/HardcoreQuest/lib/spigot-api-1.9-R0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="D:/Prog/Things/spigot-1.9.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
