@@ -42,7 +42,7 @@ public class HardcoreQuest extends JavaPlugin
 		log("Plugin enabled!");
 		
 		//this sends the message "Lets get going WO" when the server starts
-		Bukkit.getServer().getLogger().info(ChatColor.DARK_AQUA + "Lets get going WO");
+		Bukkit.getServer().getLogger().info(ChatColor.DARK_AQUA + "[HardcoreQuest] Lets get going WO");
 
 		// This defines the variable pm to be getServer.getPluginManager(). it is not needed but if you have lots of classes its nice to just use pm instead of getServer.getPluginManager()
 		PluginManager pm = getServer().getPluginManager();
@@ -52,7 +52,7 @@ public class HardcoreQuest extends JavaPlugin
 	public void onDisabled()
 	{
 		//this sends the message "Oh no, don't leave me..."  when the server stops
-		Bukkit.getServer().getLogger().info(ChatColor.BLUE + "Oh no, don't leave me...");			
+		Bukkit.getServer().getLogger().info(ChatColor.BLUE + "[HardcoreQuest] Oh no, don't leave me...");			
 	}
 	
 	public void log(String message)
