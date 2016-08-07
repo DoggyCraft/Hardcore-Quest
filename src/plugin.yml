@@ -6,14 +6,18 @@ softdepend: [Vault, PermissionsBukkit, PermissionsEx, bPermissions, GroupManager
 commands:
   hardcorequest:
     usage: /<command>
-    description: Description Command
+    description: A useless command.
   hq:
-    usage: /<command>
-    description: Description command
+    usage: /<command> startquest
+    description: A useless command.
   quest:
     usage: /<command>
-    description: Just a command
+    description: A useless command.
 permissions:
+  hq.*
+    description: Gives permission to all HardcoreQuest commands.
+    children:
+      hq.startquest
   hq.startquest:
     description: Permission to start a quest.
     default: false
