@@ -106,7 +106,7 @@ public class Commands
 		{
 			player.sendMessage(ChatColor.YELLOW + "---------- " + this.plugin.getDescription().getFullName() + " ----------");
 
-			//TODO: Permission handling
+			//Permission handling
 			if (player.hasPermission("hq.startquest"))
 			{
 				player.sendMessage(ChatColor.AQUA + "/hq startquest" + ChatColor.WHITE + " - Starts a quest");
