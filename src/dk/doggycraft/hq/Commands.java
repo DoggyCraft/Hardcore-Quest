@@ -56,7 +56,7 @@ public class Commands
 			if (!(sender instanceof Player))
 			{
 				sender.sendMessage("Do A Barrel Roll");
-				// return true;
+				 return true;
 			}
 
 			// the Player p is set to (Player) sender. this is unnecesary for
