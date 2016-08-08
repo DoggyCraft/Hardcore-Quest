@@ -74,6 +74,7 @@ public class Commands
 		return true;
 	}
 	
+	//Shows some info
 	public void CommandInfo(Player player)
 	{
 		// Show some info
@@ -81,7 +82,8 @@ public class Commands
 		player.sendMessage(ChatColor.YELLOW + "Contributers: Draco (Plugin base code & more) - Doggy (More code that needs to be specified) - Fido (Fucked up the code)");
 		
 	}
-
+	
+	//Reloads the config
 	public void CommandReload(Player player)
 	{
 		this.plugin.reloadSettings();
