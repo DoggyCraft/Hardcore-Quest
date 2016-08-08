@@ -13,11 +13,13 @@ commands:
 permissions:
   hq.*:
     description: Gives permission to all of the HardcoreQuest plugins commands.
+    default: false
     children:
-      hq.startquest
-      hq.reload
-      hq.admin
-      hq.help
+      hq.startquest: true
+      hq.reload: true
+      hq.admin: true
+      hq.help: true
+      hq.info: true
   hq.admin:
     description: Permission to everything an admin should could do.
     default: false
