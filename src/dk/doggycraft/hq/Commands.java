@@ -69,7 +69,7 @@ public class Commands
 			{
 				if (args[0].equalsIgnoreCase("reload"))
 				{
-					if (!player.hasPermission("hq.reload")))
+					if (!player.hasPermission("hq.reload"))
 					{
 						return false;
 					}
@@ -81,7 +81,7 @@ public class Commands
 				}
 				if (args[0].equalsIgnoreCase("help"))
 				{
-					if (!player.hasPermission("hq.help")))
+					if (!player.hasPermission("hq.help"))
 					{
 						return false;
 					}
