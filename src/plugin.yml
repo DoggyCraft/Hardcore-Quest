@@ -14,10 +14,18 @@ commands:
     usage: /<command>
     description: This is the main command for HardcoreQuest.
 permissions:
-  hq.*
-    description: Gives permission to all HardcoreQuest commands.
+  hq.*:
+    description: Gives permission to all of the HardcoreQuest plugins commands.
     children:
       hq.startquest
+      hq.reload
+  hq.admin:
+    description: Permission to everything an admin should could do.
+    default: false
   hq.startquest:
     description: Permission to start a quest.
     default: false
+  hq.reload:
+    description: Permission to reload the plugin.
+    default: false
+
