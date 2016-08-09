@@ -35,6 +35,8 @@ public class Commands
 			CommandInfo(player,label);
 		}
 		
+		QuestManager getQuestManager = new QuestManager(plugin);
+				
 		if (player == null)
 		{
 			if (cmd.getName().equalsIgnoreCase("HardcoreQuest") || cmd.getName().equalsIgnoreCase("HQ")) 
