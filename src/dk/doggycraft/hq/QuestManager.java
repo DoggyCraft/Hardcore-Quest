@@ -14,6 +14,7 @@ public class QuestManager
 	// Load all defined quests from quests.yml configuration file
 	public void load()
 	{
+		quests.yml questlist = new quests.yml
 	}
 
 	// Generate a new quest for the player and return a handle to it
