@@ -61,95 +61,10 @@ public class SenderManager
 		save();
 	}
 
-	public boolean hasRecentQuestAttempt(String believerName)
-	{
-		String lastQuestString = this.senderConfig.getString(believerName + ".LastQuestTime");
-
-		String pattern = "HH:mm dd-MM-yyyy";
-		DateFormat formatter = new SimpleDateFormat(pattern);
-		Date lastQuestDate = null;
-		Date thisDate = new Date();
-		try
-		{
-			lastQuestDate = formatter.parse(lastQuestString);
-		}
-		catch (Exception ex)
-		{
-			lastQuestDate = new Date();
-			lastQuestDate.setTime(0L);
-		}
-
-		long diff = thisDate.getTime() - lastQuestDate.getTime();
-		long diffMinutes = diff / 60000L;
-
-		return diffMinutes < plugin.minQuestTime;
-	}
-
-	public boolean hasOutdatedQuestAttempt(String believerName)
-	{
-		String lastQuestString = this.senderConfig.getString(believerName + ".LastQuestTime");
-
-		String pattern = "HH:mm dd-MM-yyyy";
-		DateFormat formatter = new SimpleDateFormat(pattern);
-		Date lastQuestDate = null;
-		Date thisDate = new Date();
-		try
-		{
-			lastQuestDate = formatter.parse(lastQuestString);
-		}
-		catch (Exception ex)
-		{
-			lastQuestDate = new Date();
-			lastQuestDate.setTime(0L);
-		}
-
-		long diff = thisDate.getTime() - lastQuestDate.getTime();
-		long diffMinutes = diff / 60000L;
-
-		return diffMinutes > plugin.autoCleanTime;
-	}
-
-	public int getTimeUntilCanDoQuest(World world, String senderName)
-	{
-		String lastQuestString = senderConfig.getString(senderName + ".LastQuestTime");
-
-		String pattern = "HH:mm dd-MM-yyyy";
-		DateFormat formatter = new SimpleDateFormat(pattern);
-		Date lastQuestDate = null;
-		Date thisDate = new Date();
-
-		try
-		{
-			lastQuestDate = formatter.parse(lastQuestString);
-		}
-		catch (Exception ex)
-		{
-			lastQuestDate = new Date();
-			lastQuestDate.setTime(0L);
-		}
-
-		long diff = thisDate.getTime() - lastQuestDate.getTime();
-		long diffMinutes = diff / 60000L;
-
-		return (int) (plugin.minQuestTime - diffMinutes);
-	}
-
+	
 	public void answer(String playerName, String answer)
 	{
-		String correctAnswer = senderConfig.getString(playerName + ".QuestCorrectOption");
 
-		if (answer.equalsIgnoreCase(correctAnswer))
-		{
-			int correctAnswers = senderConfig.getInt(playerName + ".QuestCorrectAnswers");
-
-			correctAnswers++;
-
-			senderConfig.set(playerName + ".QuestCorrectAnswers", correctAnswers);
-
-			save();
-		}
-
-		plugin.getsSenderManager().setLastExamTime(playerName);
 	}
 
 	public void setOriginalRank(String playerName, String oldRank)

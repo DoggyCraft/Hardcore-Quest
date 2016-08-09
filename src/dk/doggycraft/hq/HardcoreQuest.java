@@ -32,10 +32,16 @@ public class HardcoreQuest extends JavaPlugin
 	private Commands commands	= null;
 	
 	ConsoleCommandSender consoles = Bukkit.getConsoleSender();
+
+	private QuestManager questManager = null;
 	
+	private SenderManager senderManager = null;
+	
+	private PermissionsManager permissionsManager = null;
+
 	public QuestManager getQuestManager()
 	{
-		return this.getQuestManager;
+		return this.questManager;
 	}
 
 	public SenderManager getSenderManager()
@@ -45,7 +51,7 @@ public class HardcoreQuest extends JavaPlugin
 
 	public PermissionsManager getPermissionsManager()
 	{
-		return this.PermissionsManager;
+		return this.permissionsManager;
 	}
 	
 	// This gets triggered once when the server starts

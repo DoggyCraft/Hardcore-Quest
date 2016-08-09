@@ -158,8 +158,6 @@ public class Commands
 			//p.sendMessage(ChatColor.GREEN + "This is another" + ChatColor.RED + " colored Message");
 			//return true;
 		//}
-
-		return true;
 	}
 	
 	//Shows some info
@@ -177,21 +175,13 @@ public class Commands
 	{
 		if (!plugin.getSenderManager().isDoingQuest(player.getName()))
 		{
-			player.sendMessage(ChatColor.RED + "You are not taking any quest!");
+			player.sendMessage(ChatColor.RED + "You are not on any quest!");
 			return;
 		}
 
 		plugin.getSenderManager().answer(player.getName(), answer);
 
-		if (plugin.getQuestManager().nextExamQuestion(player.getName()))
-		{
-			plugin.getQuestManager().doQuestQuestion(player.getName());
-		}
-		else
-		{
-			plugin.getQuestManager().calculateQuestResult(player.getName());
-			plugin.getSenderManager().removeSender(player.getName());
-		}
+		
 	}
 	
 	//Reloads the config
