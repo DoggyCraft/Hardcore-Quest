@@ -1,5 +1,6 @@
 package dk.doggycraft.hq;
 
+import org.apache.commons.lang.ObjectUtils.Null;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -31,7 +32,7 @@ public class Commands
 		
 		if (label.equalsIgnoreCase("info"))
 		{
-			CommandInfo(player);
+			CommandInfo(player,label);
 		}
 		
 		if (player == null)
@@ -61,7 +62,7 @@ public class Commands
 		{
 			if (args.length == 0)
 			{
-				CommandHelp(sender);
+				CommandHelp(player);
 				plugin.log(sender.getName() + " /hq");
 				return true;
 			}
@@ -86,7 +87,7 @@ public class Commands
 						return false;
 					}
 
-					CommandHelp(sender);
+					CommandHelp(player);
 					this.plugin.log(sender.getName() + " /hq help");
 					return true;
 				}
@@ -111,7 +112,7 @@ public class Commands
 							return false;
 						}
 
-						CommandInfo(sender, args[1]);
+						CommandInfo(player, args[1]);
 						this.plugin.log(sender.getName() + " /hq info " + args[1]);
 						return true;
 					}
@@ -160,7 +161,7 @@ public class Commands
 	}
 	
 	//Shows some info
-	public void CommandInfo(Player player)
+	public void CommandInfo(Player player, String sting)
 	{
 		// Show some info
 		// like
