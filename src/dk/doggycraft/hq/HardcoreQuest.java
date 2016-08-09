@@ -33,6 +33,21 @@ public class HardcoreQuest extends JavaPlugin
 	
 	ConsoleCommandSender consoles = Bukkit.getConsoleSender();
 	
+	public QuestManager getQuestManager()
+	{
+		return this.getQuestManager;
+	}
+
+	public SenderManager getSenderManager()
+	{
+		return this.senderManager;
+	}
+
+	public PermissionsManager getPermissionsManager()
+	{
+		return this.PermissionsManager;
+	}
+	
 	// This gets triggered once when the server starts
 	@Override
 	public void onEnable()

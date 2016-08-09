@@ -67,7 +67,7 @@ public class QuestManager
 			save();			
 		}
 
-		//examsConfig = YamlConfiguration.loadConfiguration(examsConfigFile);
+		//questConfig = YamlConfiguration.loadConfiguration(questsConfigFile);
 
 		if (questsConfig.getKeys(false).size() > 0)
 		{

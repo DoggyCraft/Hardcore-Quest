@@ -172,6 +172,27 @@ public class Commands
 		player.sendMessage("");
 		player.sendMessage(ChatColor.AQUA + "This Plugin is absolutely useless right now");
 	}
+
+	private void CommandAnswer(Player player, String answer)
+	{
+		if (!plugin.getSenderManager().isDoingQuest(player.getName()))
+		{
+			player.sendMessage(ChatColor.RED + "You are not taking any quest!");
+			return;
+		}
+
+		plugin.getSenderManager().answer(player.getName(), answer);
+
+		if (plugin.getQuestManager().nextExamQuestion(player.getName()))
+		{
+			plugin.getQuestManager().doQuestQuestion(player.getName());
+		}
+		else
+		{
+			plugin.getQuestManager().calculateQuestResult(player.getName());
+			plugin.getSenderManager().removeSender(player.getName());
+		}
+	}
 	
 	//Reloads the config
 	public void CommandReload(Player player)
