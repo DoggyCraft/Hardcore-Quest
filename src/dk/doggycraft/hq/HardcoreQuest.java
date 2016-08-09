@@ -78,6 +78,7 @@ public class HardcoreQuest extends JavaPlugin
 	public void loadSettings()
 	{
 		this.serverName = config.getString("Settings.ServerName", "Your Server");		
+		this.debug = config.getBoolean("Settings.Debug", false);
 	}
 
 	public void saveSettings()
