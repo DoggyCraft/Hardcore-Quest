@@ -2,7 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/CloudStation/minecraft/plugins/HardcoreQuest/lib/spigot-1.9-R0.1-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="C:/CloudStation/minecraft/plugins/HardcoreQuest/lib/spigot-api-1.9-R0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/spigot.jar"/>
+	<classpathentry kind="lib" path="lib/bukkit.jar"/>
+	<classpathentry kind="lib" path="lib/PermissionsBukkit-2.5.jar"/>
+	<classpathentry kind="lib" path="lib/bPermissions-2.12-DEV-all.jar"/>
+	<classpathentry kind="lib" path="lib/EssentialsGroupManager.jar"/>
+	<classpathentry kind="lib" path="lib/PermissionsEx-1.23.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

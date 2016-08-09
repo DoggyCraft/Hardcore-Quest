@@ -6,14 +6,33 @@ softdepend: [Vault, PermissionsBukkit, PermissionsEx, bPermissions, GroupManager
 commands:
   hardcorequest:
     usage: /<command>
-    description: Description Command
+    description: The command for the HardcoreQuest plugin.
   hq:
     usage: /<command>
-    description: Description command
-  quest:
-    usage: /<command>
-    description: Just a command
+    description: The command for the HardcoreQuest plugin.
 permissions:
+  hq.*:
+    description: Gives permission to all of the HardcoreQuest plugins commands.
+    default: false
+    children:
+      hq.startquest: true
+      hq.reload: true
+      hq.admin: true
+      hq.help: true
+      hq.info: true
+  hq.admin:
+    description: Permission to everything an admin should could do.
+    default: false
   hq.startquest:
     description: Permission to start a quest.
     default: false
+  hq.reload:
+    description: Permission to reload the plugin.
+    default: false
+  hq.help:
+    description: Permission to use the help command.
+    default: true
+  hq.info:
+    description: Permission to use the info command.
+    default: true
+
