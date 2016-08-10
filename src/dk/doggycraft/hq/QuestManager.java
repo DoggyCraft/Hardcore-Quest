@@ -68,6 +68,11 @@ public class QuestManager
 		return new String[4];
 	}	
 	
+	public boolean isDoingQuest(Player player)
+	{
+		return false;
+	}
+	
 	public void handleAction(Player player, String action)
 	{
 		player.sendMessage(ChatColor.DARK_RED + "* You pick up the knife and slices the plant");			

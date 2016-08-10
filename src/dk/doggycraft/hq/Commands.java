@@ -167,8 +167,8 @@ public class Commands
 	private void CommandAction(Player player, String[] args)
 	{
 		if (player.hasPermission("hq.action"))
-		{
-			if (!plugin.getSenderManager().isDoingQuest(player.getName()))
+		{			
+			if (!plugin.getQuestManager().isDoingQuest(player))
 			{
 				player.sendMessage(ChatColor.RED + "You are not on any quest!");
 				return;
