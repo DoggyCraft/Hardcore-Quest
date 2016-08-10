@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 
 import dk.doggycraft.hq.HardcoreQuest;
 
+@SuppressWarnings("unused")
 public class Commands 
 {
 	private HardcoreQuest	plugin;
@@ -86,14 +87,18 @@ public class Commands
 	//Shows some info
 	public void CommandInfo(Player player, String sting)
 	{
-		// Show some info
-		// like
-		player.sendMessage(ChatColor.YELLOW + "--------------- Hardcore Quest V0.0.1 ---------------");
-		player.sendMessage(ChatColor.AQUA + "By The Doggycraft Team");
-		player.sendMessage("");
-		player.sendMessage(ChatColor.AQUA + "This Plugin is absolutely useless right now");
+		if (player.hasPermission("hq.info"))
+		{
+			// Show some info
+			// like
+			player.sendMessage(ChatColor.YELLOW + "--------------- Hardcore Quest V0.0.1 ---------------");
+			player.sendMessage(ChatColor.AQUA + "By The Doggycraft Team");
+			player.sendMessage("");
+			player.sendMessage(ChatColor.AQUA + "This Plugin is absolutely useless right now");
+		}
 	}
 	
+	//Shows help
 	public boolean CommandHelp(Player player)
 	{
 		if (player == null)
@@ -115,33 +120,40 @@ public class Commands
 		return true;
 	}	
 	
+	//Does things
 	private void CommandAction(Player player, String[] args)
 	{
-		if (!plugin.getSenderManager().isDoingQuest(player.getName()))
+		if (player.hasPermission("hq.action"))
 		{
-			player.sendMessage(ChatColor.RED + "You are not on any quest!");
-			return;
+			if (!plugin.getSenderManager().isDoingQuest(player.getName()))
+			{
+				player.sendMessage(ChatColor.RED + "You are not on any quest!");
+				return;
+			}
+	
+			plugin.getQuestManager().handleAction(player, args[0]);		
 		}
-
-		plugin.getQuestManager().handleAction(player, args[0]);		
 	}
 	
 	//Reloads the config
 	public void CommandReload(Player player)
 	{
-		this.plugin.reloadSettings();
-		
-		if (player == null)
+		if (player.hasPermission("hq.reload"))
 		{
-			this.plugin.log(this.plugin.getDescription().getFullName() + ": Reloaded configuration.");
-		}
-		else
-		{
-			player.sendMessage(ChatColor.YELLOW + this.plugin.getDescription().getFullName() + ": " + ChatColor.WHITE + "Reloaded configuration.");
+			this.plugin.reloadSettings();
+			
+			if (player == null)
+			{
+				this.plugin.log(this.plugin.getDescription().getFullName() + ": Reloaded configuration.");
+			}
+			else
+			{
+				player.sendMessage(ChatColor.YELLOW + this.plugin.getDescription().getFullName() + ": " + ChatColor.WHITE + "Reloaded configuration.");
+			}
 		}
 	}
 
-	
+	//Doesn't do shit
 	private void CommandHQList(CommandSender sender)
 	{
 	}
