@@ -10,6 +10,7 @@ import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
+@SuppressWarnings("unused")
 public class SenderManager
 {
 	private HardcoreQuest				plugin				= null;
