@@ -44,9 +44,8 @@ public class Commands
 			{
 				if(args[0].equalsIgnoreCase("reload"))
 				{
-					plugin.reloadSettings();
-					plugin.loadSettings();
-					plugin.getQuestManager().load();
+					CommandReload(player);
+					plugin.log(sender.getName() + " /hq reload");
 
 					return true;
 				}
@@ -54,6 +53,39 @@ public class Commands
 
 			return true;
 		}
+		
+		if (player == null)
+		{
+			if (args.length == 1)
+			{
+				if(args[0].equalsIgnoreCase("help"))
+				{
+					CommandHelp(player);
+					plugin.log(sender.getName() + " /hq help");
+
+					return true;
+				}
+			}
+
+			return true;
+		}
+		
+		if (player == null)
+		{
+			if (args.length == 1)
+			{
+				if(args[0].equalsIgnoreCase("info"))
+				{
+					CommandInfo(player, toString());
+					plugin.log(sender.getName() + " /hq info");
+
+					return true;
+				}
+			}
+
+			return true;
+		}
+
 
 		// User has just written /hq command and nothing else 
 		if (args.length == 0)
@@ -155,6 +187,8 @@ public class Commands
 		if (player.hasPermission("hq.reload"))
 		{
 			this.plugin.reloadSettings();
+			this.plugin.loadSettings();
+			this.plugin.getQuestManager().load();
 			
 			if (player == null)
 			{
