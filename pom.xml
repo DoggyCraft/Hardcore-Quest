@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>dk.doggycraft</groupId>
 	<artifactId>HardcoreQuest</artifactId>
-	<version>0.1</version>
+	<version>0.0.1</version>
 
 	<organization>
 		<name>DoggyCraftDK</name>
@@ -29,6 +29,8 @@
 	</scm>
 
     <build>
+        <defaultGoal>clean package install</defaultGoal>
+        <finalName>HardcoreQuest-${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -18,3 +18,29 @@ ServerName: 'YourServerName'
 
 #This Sets Something Else in the Future
 SomethingElse: 5
+
+
+####################################################
+#   This is The Config file for the plugin's       #
+#                Title Feature                     #
+#                                                  #
+#  This Plugin was created by the DoggyCraft team  #
+#                You can find us at                #
+#         https://github.com/DoggyCraftDK/         #
+#   If you have questions, a bug or just an idea   #
+#                Please let us know                #
+####################################################
+
+#Feature to send title on join
+Title On Join: false
+#Topline text
+Title Message: "Welcome"
+#Bottomline text
+Subtitle Message: "%player% to my server"
+
+#Feature to have text in the servers tabs header 
+Tab Header Enabled: false
+#Top tab text
+Tab Header Message: "[Insert text here]"
+#Bottom tab text
+Tab Footer Message: "[Insert text here]"

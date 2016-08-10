@@ -85,6 +85,22 @@ public class Commands
 
 			return true;
 		}
+		
+		if (player == null)
+		{
+			if (args.length == 1)
+			{
+				if(args[0].equalsIgnoreCase("startquest"))
+				{
+					CommandStartQuest(player);
+					plugin.log(sender.getName() + " /hq startquest");
+
+					return true;
+				}
+			}
+
+			return true;
+		}
 
 
 		// User has just written /hq command and nothing else 
@@ -103,6 +119,7 @@ public class Commands
 				case "info" : CommandInfo(player); break;
 			    case "help" : CommandHelp(player); break;
 				case "reload" : CommandReload(player); break;
+				case "startquest" : CommandStartQuest(player); break;
 				case "a" : 
 				case "b" : 
 				case "c" : 
@@ -153,6 +170,18 @@ public class Commands
 				{
 					player.sendMessage(ChatColor.AQUA + "/hq startquest" + ChatColor.WHITE + " - Starts a quest");
 				}
+				if (player.hasPermission("hq.help"))
+				{
+					player.sendMessage(ChatColor.AQUA + "/hq help" + ChatColor.WHITE + " - Shows help");
+				}
+				if (player.hasPermission("hq.info"))
+				{
+					player.sendMessage(ChatColor.AQUA + "/hq info" + ChatColor.WHITE + " - Shows info about the plugin");
+				}
+				if (player.hasPermission("hq.reload"))
+				{
+					player.sendMessage(ChatColor.AQUA + "/hq reload" + ChatColor.WHITE + " - Reloads the plugin");
+				}
 			}
 		}
 		else
@@ -199,6 +228,19 @@ public class Commands
 			{
 				player.sendMessage(ChatColor.YELLOW + this.plugin.getDescription().getFullName() + ": " + ChatColor.WHITE + "Reloaded configuration.");
 			}
+		}
+		else
+		{
+			player.sendMessage(ChatColor.RED + "You do not have permission for this command!");
+		}
+	}
+	
+	//Starts the quest
+	public void CommandStartQuest(Player player)
+	{
+		if (player.hasPermission("hq.startquest"))
+		{
+			HardcoreQuest.sendTitle(player,10,20,10,"&a&k>&r&8The Quest has&r&a&k<","&a&k>&r&8STARTED!&r&a&k<");
 		}
 		else
 		{
