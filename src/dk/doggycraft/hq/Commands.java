@@ -100,6 +100,7 @@ public class Commands
 		{
 			switch(args[0].toLowerCase())
 			{
+				case "info" : CommandInfo(player); break;
 			    case "help" : CommandHelp(player); break;
 				case "reload" : CommandReload(player); break;
 				case "a" : 
