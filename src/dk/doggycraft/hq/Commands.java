@@ -76,7 +76,7 @@ public class Commands
 			{
 				if(args[0].equalsIgnoreCase("info"))
 				{
-					CommandInfo(player, toString());
+					CommandInfo(player);
 					plugin.log(sender.getName() + " /hq info");
 
 					return true;
@@ -117,7 +117,7 @@ public class Commands
 	}
 	
 	//Shows some info
-	public void CommandInfo(Player player, String sting)
+	public void CommandInfo(Player player)
 	{
 		if (player.hasPermission("hq.info"))
 		{
