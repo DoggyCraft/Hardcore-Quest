@@ -62,6 +62,7 @@ public class HardcoreQuest extends JavaPlugin
 		this.commands = new Commands(this);
 		
 		this.console = this.getServer().getConsoleSender();
+		this.questManager = new QuestManager(this);
 
 		//this sends the message "[Hardcore Quest] Lets get going WO" when the server starts
 		consoles.sendMessage(ChatColor.DARK_AQUA + "[Hardcore Quest] Lets get going WO");

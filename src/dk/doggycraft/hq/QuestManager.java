@@ -66,4 +66,11 @@ public class QuestManager
 	{
 		return new String[4];
 	}	
+	
+	public void handleAction(Player player, String action)
+	{
+		player.sendMessage(ChatColor.DARK_RED + "* You pick up the knife and slices the plant");			
+		player.sendMessage(ChatColor.DARK_PURPLE + "The plant contains explosives and blows you up in 1000 pieces!");			
+		player.sendMessage(ChatColor.DARK_RED + "You are DEAD!");			
+	}
 }

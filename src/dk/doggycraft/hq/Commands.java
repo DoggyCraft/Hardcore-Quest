@@ -29,135 +29,58 @@ public class Commands
 		{
 			player = (Player) sender;			
 		}
-		
-		if (label.equalsIgnoreCase("info"))
+
+		// Check that the command is something we want to handle at all
+		if (!cmd.getName().equalsIgnoreCase("HardcoreQuest") && !cmd.getName().equalsIgnoreCase("HQ")) 
 		{
-			CommandInfo(player,label);
+			return false;
 		}
-		
-		QuestManager getQuestManager = new QuestManager(plugin);
-				
+					
+		// If the player is null, it means the command comes from the server console
 		if (player == null)
 		{
-			if (cmd.getName().equalsIgnoreCase("HardcoreQuest") || cmd.getName().equalsIgnoreCase("HQ")) 
+			if (args.length == 1)
 			{
-				if (args.length == 1)
+				if(args[0].equalsIgnoreCase("reload"))
 				{
-					if(args[0].equalsIgnoreCase("reload"))
-					{
-						plugin.reloadSettings();
-						plugin.loadSettings();
-						plugin.getQuestManager().load();
+					plugin.reloadSettings();
+					plugin.loadSettings();
+					plugin.getQuestManager().load();
 
-						return true;
-					}
+					return true;
 				}
-
-				CommandHQList(player);
 			}
 
 			return true;
 		}
-	
-		// This checks if the command typed is equal with "HardcoreQuest" or "HQ"
-		if (cmd.getName().equalsIgnoreCase("HardcoreQuest") || cmd.getName().equalsIgnoreCase("HQ")) 
+
+		// User has just written /hq command and nothing else 
+		if (args.length == 0)
 		{
-			if (args.length == 0)
-			{
-				CommandHelp(player);
-				plugin.log(sender.getName() + " /hq");
-				return true;
-			}
-			if (args.length == 1)
-			{
-				if (args[0].equalsIgnoreCase("reload"))
-				{
-					if (!player.hasPermission("hq.reload"))
-					{
-						return false;
-					}
-					this.plugin.loadSettings();
-					this.plugin.getQuestManager().load();
-					sender.sendMessage(this.plugin.getDescription().getFullName() + ": Reloaded configuration.");
-					this.plugin.log(sender.getName() + " /hq reload");
-					return true;
-				}
-				if (args[0].equalsIgnoreCase("help"))
-				{
-					if (!player.hasPermission("hq.help"))
-					{
-						return false;
-					}
-
-					CommandHelp(player);
-					this.plugin.log(sender.getName() + " /hq help");
-					return true;
-				}
-				if ((args[0].equalsIgnoreCase("a")) || (args[0].equalsIgnoreCase("b")) || (args[0].equalsIgnoreCase("c")) || (args[0].equalsIgnoreCase("d")))
-				{
-					CommandAnswer(player, args[0].toLowerCase());
-				}
-				else
-				{
-					sender.sendMessage(ChatColor.RED + "Invalid HardcoreQuest command");
-					return true;
-				}
-			}
-			else
-			{
-				if (args.length == 2)
-				{
-					if (args[0].equalsIgnoreCase("info"))
-					{
-						if (!player.hasPermission("hq.info"))
-						{
-							return false;
-						}
-
-						CommandInfo(player, args[1]);
-						this.plugin.log(sender.getName() + " /hq info " + args[1]);
-						return true;
-					}
-
-					sender.sendMessage(ChatColor.RED + "Invalid HardcoreQuest command");
-					return true;
-				}
-
-				if (args.length > 3)
-				{
-					sender.sendMessage(ChatColor.RED + "Too many arguments!");
-					return true;
-				}
-			}
+			CommandHelp(player);
+			plugin.log(sender.getName() + " /hq");
+			return true;	
 		}
-		return true;
-	
-
-		// if someone types a command this will check if its the specific
-		// command /quest and the equalsIgnoreCase tells the plugin that it
-		// dosn't matter if it is written in caps or not
-		//if (cmd.getName().equalsIgnoreCase("Quest"))
-		//{
-			// this checks if the person that sends the command is a player or
-			// the console. if it is the console it returns the messgage "Do A
-			// Barrel Roll"
-			//if (!(sender instanceof Player))
-			//{
-				//sender.sendMessage("Do A Barrel Roll");
-				 //return true;
-			//}
-
-			// the Player p is set to (Player) sender. this is unnecesary for
-			// now but if you want to do more complicated things with the player
-			// than to send them a message the p variable
-			// will be a good thing to use
-			//Player p = (Player) sender;
-			// sends the player that uses the command /quest a colorfull message
-			//sender.sendMessage(ChatColor.YELLOW + "This is a" + ChatColor.BLUE + " colored Message");
-			// but as mentioned we redefined it to p so you can also use p so send a message 
-			//p.sendMessage(ChatColor.GREEN + "This is another" + ChatColor.RED + " colored Message");
-			//return true;
-		//}
+		
+		// User has written /hq <something> 
+		if (args.length == 1)
+		{
+			switch(args[0].toLowerCase())
+			{
+			    case "help" : CommandHelp(player); break;
+				case "reload" : CommandReload(player); break;
+				case "a" : 
+				case "b" : 
+				case "c" : 
+				case "d" : CommandAction(player, args); break;
+				default : player.sendMessage(ChatColor.RED + "Invalid HardcoreQuest command");				
+			}
+			
+			return true;
+		}
+		
+		sender.sendMessage(ChatColor.RED + "Too many arguments!");
+		return true;		
 	}
 	
 	//Shows some info
@@ -165,40 +88,12 @@ public class Commands
 	{
 		// Show some info
 		// like
-		player.sendMessage(ChatColor.YELLOW + "---------------Hardcore Quest V0.0.1---------------");
+		player.sendMessage(ChatColor.YELLOW + "--------------- Hardcore Quest V0.0.1 ---------------");
 		player.sendMessage(ChatColor.AQUA + "By The Doggycraft Team");
 		player.sendMessage("");
 		player.sendMessage(ChatColor.AQUA + "This Plugin is absolutely useless right now");
 	}
-
-	private void CommandAnswer(Player player, String answer)
-	{
-		if (!plugin.getSenderManager().isDoingQuest(player.getName()))
-		{
-			player.sendMessage(ChatColor.RED + "You are not on any quest!");
-			return;
-		}
-
-		plugin.getSenderManager().answer(player.getName(), answer);
-
-		
-	}
 	
-	//Reloads the config
-	public void CommandReload(Player player)
-	{
-		this.plugin.reloadSettings();
-		
-		if (player == null)
-		{
-			this.plugin.log(this.plugin.getDescription().getFullName() + ": Reloaded configuration.");
-		}
-		else
-		{
-			player.sendMessage(ChatColor.YELLOW + this.plugin.getDescription().getFullName() + ": " + ChatColor.WHITE + "Reloaded configuration.");
-		}
-	}
-
 	public boolean CommandHelp(Player player)
 	{
 		if (player == null)
@@ -219,6 +114,34 @@ public class Commands
 		
 		return true;
 	}	
+	
+	private void CommandAction(Player player, String[] args)
+	{
+		if (!plugin.getSenderManager().isDoingQuest(player.getName()))
+		{
+			player.sendMessage(ChatColor.RED + "You are not on any quest!");
+			return;
+		}
+
+		plugin.getQuestManager().handleAction(player, args[0]);		
+	}
+	
+	//Reloads the config
+	public void CommandReload(Player player)
+	{
+		this.plugin.reloadSettings();
+		
+		if (player == null)
+		{
+			this.plugin.log(this.plugin.getDescription().getFullName() + ": Reloaded configuration.");
+		}
+		else
+		{
+			player.sendMessage(ChatColor.YELLOW + this.plugin.getDescription().getFullName() + ": " + ChatColor.WHITE + "Reloaded configuration.");
+		}
+	}
+
+	
 	private void CommandHQList(CommandSender sender)
 	{
 	}
