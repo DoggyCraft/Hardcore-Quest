@@ -20,9 +20,15 @@ permissions:
       hq.admin: true
       hq.help: true
       hq.info: true
+      hq.action: true
   hq.admin:
     description: Permission to everything an admin should could do.
     default: false
+    children:
+      hq.startquest: true
+      hq.help: true
+      hq.info: true
+      hq.action: true
   hq.startquest:
     description: Permission to start a quest.
     default: false
@@ -35,4 +41,7 @@ permissions:
   hq.info:
     description: Permission to use the info command.
     default: true
+  hq.action:
+    description: Permission to do things in quests.
+    default: false
 

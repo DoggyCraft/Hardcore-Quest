@@ -15,6 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 
 // This is the main class of the plugin.
+@SuppressWarnings("unused")
 public class HardcoreQuest extends JavaPlugin
 {	
 	private boolean debug = false;

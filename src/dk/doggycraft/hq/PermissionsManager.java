@@ -12,8 +12,8 @@ import com.platymuus.bukkit.permissions.PermissionsPlugin;
 
 import de.bananaco.bpermissions.api.ApiLayer;
 import de.bananaco.bpermissions.api.WorldManager;
-import de.bananaco.bpermissions.api.util.Calculable;
-import de.bananaco.bpermissions.api.util.CalculableType;
+//import de.bananaco.bpermissions.api.util.Calculable;
+//import de.bananaco.bpermissions.api.util.CalculableType;
 
 import ru.tehkode.permissions.PermissionGroup;
 import ru.tehkode.permissions.PermissionManager;
@@ -25,6 +25,7 @@ import org.anjocaido.groupmanager.permissions.AnjoPermissionsHandler;
 import org.anjocaido.groupmanager.data.User;
 import org.anjocaido.groupmanager.dataholder.OverloadedWorldHolder;
 
+@SuppressWarnings("unused")
 public class PermissionsManager
 {
 	private String pluginName = "null";

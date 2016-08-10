@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 
 import dk.doggycraft.hq.HardcoreQuest;
 
+@SuppressWarnings("unused")
 public class Commands 
 {
 	private HardcoreQuest	plugin;
@@ -43,9 +44,8 @@ public class Commands
 			{
 				if(args[0].equalsIgnoreCase("reload"))
 				{
-					plugin.reloadSettings();
-					plugin.loadSettings();
-					plugin.getQuestManager().load();
+					CommandReload(player);
+					plugin.log(sender.getName() + " /hq reload");
 
 					return true;
 				}
@@ -53,6 +53,39 @@ public class Commands
 
 			return true;
 		}
+		
+		if (player == null)
+		{
+			if (args.length == 1)
+			{
+				if(args[0].equalsIgnoreCase("help"))
+				{
+					CommandHelp(player);
+					plugin.log(sender.getName() + " /hq help");
+
+					return true;
+				}
+			}
+
+			return true;
+		}
+		
+		if (player == null)
+		{
+			if (args.length == 1)
+			{
+				if(args[0].equalsIgnoreCase("info"))
+				{
+					CommandInfo(player);
+					plugin.log(sender.getName() + " /hq info");
+
+					return true;
+				}
+			}
+
+			return true;
+		}
+
 
 		// User has just written /hq command and nothing else 
 		if (args.length == 0)
@@ -67,6 +100,7 @@ public class Commands
 		{
 			switch(args[0].toLowerCase())
 			{
+				case "info" : CommandInfo(player); break;
 			    case "help" : CommandHelp(player); break;
 				case "reload" : CommandReload(player); break;
 				case "a" : 
@@ -84,64 +118,95 @@ public class Commands
 	}
 	
 	//Shows some info
-	public void CommandInfo(Player player, String sting)
+	public void CommandInfo(Player player)
 	{
-		// Show some info
-		// like
-		player.sendMessage(ChatColor.YELLOW + "--------------- Hardcore Quest V0.0.1 ---------------");
-		player.sendMessage(ChatColor.AQUA + "By The Doggycraft Team");
-		player.sendMessage("");
-		player.sendMessage(ChatColor.AQUA + "This Plugin is absolutely useless right now");
-	}
-	
-	public boolean CommandHelp(Player player)
-	{
-		if (player == null)
+		if (player.hasPermission("hq.info"))
 		{
-			this.plugin.log(ChatColor.WHITE + "/hq" + ChatColor.AQUA + " - Show basic info");
+			// Show some info
+			// like
+			player.sendMessage(ChatColor.YELLOW + "--------------- Hardcore Quest V0.0.1 ---------------");
+			player.sendMessage(ChatColor.AQUA + "By The DoggyCraft Tech Team");
+			player.sendMessage("");
+			player.sendMessage(ChatColor.AQUA + "This Plugin is absolutely useless right now");
 		}
 		else
 		{
-			player.sendMessage(ChatColor.YELLOW + "---------- " + this.plugin.getDescription().getFullName() + " ----------");
-
-			//Permission handling
-			if (player.hasPermission("hq.startquest"))
+			player.sendMessage(ChatColor.RED + "You do not have permission for this command!");
+		}
+	}
+	
+	//Shows help
+	public boolean CommandHelp(Player player)
+	{
+		if (player.hasPermission("hq.help"))
+		{
+			if (player == null)
 			{
-				player.sendMessage(ChatColor.AQUA + "/hq startquest" + ChatColor.WHITE + " - Starts a quest");
+				this.plugin.log(ChatColor.WHITE + "/hq" + ChatColor.AQUA + " - Show basic info");
 			}
-
+			else
+			{
+				player.sendMessage(ChatColor.YELLOW + "---------- " + this.plugin.getDescription().getFullName() + " ----------");
+	
+				//Permission handling
+				if (player.hasPermission("hq.startquest"))
+				{
+					player.sendMessage(ChatColor.AQUA + "/hq startquest" + ChatColor.WHITE + " - Starts a quest");
+				}
+			}
+		}
+		else
+		{
+			player.sendMessage(ChatColor.RED + "You do not have permission for this command!");
 		}
 		
 		return true;
 	}	
 	
+	//Does things
 	private void CommandAction(Player player, String[] args)
 	{
-		if (!plugin.getSenderManager().isDoingQuest(player.getName()))
+		if (player.hasPermission("hq.action"))
 		{
-			player.sendMessage(ChatColor.RED + "You are not on any quest!");
-			return;
+			if (!plugin.getSenderManager().isDoingQuest(player.getName()))
+			{
+				player.sendMessage(ChatColor.RED + "You are not on any quest!");
+				return;
+			}
+	
+			plugin.getQuestManager().handleAction(player, args[0]);		
 		}
-
-		plugin.getQuestManager().handleAction(player, args[0]);		
+		else
+		{
+			player.sendMessage(ChatColor.RED + "You do not have permission for this command!");
+		}
 	}
 	
 	//Reloads the config
 	public void CommandReload(Player player)
 	{
-		this.plugin.reloadSettings();
-		
-		if (player == null)
+		if (player.hasPermission("hq.reload"))
 		{
-			this.plugin.log(this.plugin.getDescription().getFullName() + ": Reloaded configuration.");
+			plugin.reloadSettings();
+			plugin.loadSettings();
+			plugin.getQuestManager().load();
+			
+			if (player == null)
+			{
+				this.plugin.log(this.plugin.getDescription().getFullName() + ": Reloaded configuration.");
+			}
+			else
+			{
+				player.sendMessage(ChatColor.YELLOW + this.plugin.getDescription().getFullName() + ": " + ChatColor.WHITE + "Reloaded configuration.");
+			}
 		}
 		else
 		{
-			player.sendMessage(ChatColor.YELLOW + this.plugin.getDescription().getFullName() + ": " + ChatColor.WHITE + "Reloaded configuration.");
+			player.sendMessage(ChatColor.RED + "You do not have permission for this command!");
 		}
 	}
 
-	
+	//Doesn't do shit
 	private void CommandHQList(CommandSender sender)
 	{
 	}

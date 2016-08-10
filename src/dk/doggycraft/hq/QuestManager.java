@@ -26,6 +26,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
+@SuppressWarnings("unused")
 public class QuestManager
 {
 	private HardcoreQuest plugin;
