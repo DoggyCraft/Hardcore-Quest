@@ -96,25 +96,35 @@ public class Commands
 			player.sendMessage("");
 			player.sendMessage(ChatColor.AQUA + "This Plugin is absolutely useless right now");
 		}
+		else
+		{
+			player.sendMessage(ChatColor.RED + "You do not have permission for this command!");
+		}
 	}
 	
 	//Shows help
 	public boolean CommandHelp(Player player)
 	{
-		if (player == null)
+		if (player.hasPermission("hq.help"))
 		{
-			this.plugin.log(ChatColor.WHITE + "/hq" + ChatColor.AQUA + " - Show basic info");
+			if (player == null)
+			{
+				this.plugin.log(ChatColor.WHITE + "/hq" + ChatColor.AQUA + " - Show basic info");
+			}
+			else
+			{
+				player.sendMessage(ChatColor.YELLOW + "---------- " + this.plugin.getDescription().getFullName() + " ----------");
+	
+				//Permission handling
+				if (player.hasPermission("hq.startquest"))
+				{
+					player.sendMessage(ChatColor.AQUA + "/hq startquest" + ChatColor.WHITE + " - Starts a quest");
+				}
+			}
 		}
 		else
 		{
-			player.sendMessage(ChatColor.YELLOW + "---------- " + this.plugin.getDescription().getFullName() + " ----------");
-
-			//Permission handling
-			if (player.hasPermission("hq.startquest"))
-			{
-				player.sendMessage(ChatColor.AQUA + "/hq startquest" + ChatColor.WHITE + " - Starts a quest");
-			}
-
+			player.sendMessage(ChatColor.RED + "You do not have permission for this command!");
 		}
 		
 		return true;
@@ -133,6 +143,10 @@ public class Commands
 	
 			plugin.getQuestManager().handleAction(player, args[0]);		
 		}
+		else
+		{
+			player.sendMessage(ChatColor.RED + "You do not have permission for this command!");
+		}
 	}
 	
 	//Reloads the config
@@ -150,6 +164,10 @@ public class Commands
 			{
 				player.sendMessage(ChatColor.YELLOW + this.plugin.getDescription().getFullName() + ": " + ChatColor.WHITE + "Reloaded configuration.");
 			}
+		}
+		else
+		{
+			player.sendMessage(ChatColor.RED + "You do not have permission for this command!");
 		}
 	}
 
