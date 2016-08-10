@@ -125,7 +125,7 @@ public class Commands
 			// Show some info
 			// like
 			player.sendMessage(ChatColor.YELLOW + "--------------- Hardcore Quest V0.0.1 ---------------");
-			player.sendMessage(ChatColor.AQUA + "By The Doggycraft Team");
+			player.sendMessage(ChatColor.AQUA + "By The DoggyCraft Tech Team");
 			player.sendMessage("");
 			player.sendMessage(ChatColor.AQUA + "This Plugin is absolutely useless right now");
 		}
@@ -187,9 +187,9 @@ public class Commands
 	{
 		if (player.hasPermission("hq.reload"))
 		{
-			this.plugin.reloadSettings();
-			this.plugin.loadSettings();
-			this.plugin.getQuestManager().load();
+			plugin.reloadSettings();
+			plugin.loadSettings();
+			plugin.getQuestManager().load();
 			
 			if (player == null)
 			{
