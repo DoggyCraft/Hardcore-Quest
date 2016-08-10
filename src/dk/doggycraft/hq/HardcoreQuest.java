@@ -58,6 +58,8 @@ public class HardcoreQuest extends JavaPlugin
 	@Override
 	public void onEnable()
 	{
+		config = getConfig();
+
 		// Make a command class 
 		this.commands = new Commands(this);
 		
