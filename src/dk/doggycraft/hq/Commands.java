@@ -137,17 +137,20 @@ public class Commands
 	//Shows some info
 	public void CommandInfo(Player player)
 	{
+		this.plugin.logDebug(this.plugin.getDescription().getFullName() + ": Checking for permissions..");
 		if (player.hasPermission("hq.info"))
 		{
+			this.plugin.logDebug(this.plugin.getDescription().getFullName() + ": Permission granted!");
 			// Show some info
 			// like
 			player.sendMessage(ChatColor.YELLOW + "--------------- Hardcore Quest V0.0.1 ---------------");
 			player.sendMessage(ChatColor.AQUA + "By The DoggyCraft Tech Team");
 			player.sendMessage("");
-			player.sendMessage(ChatColor.AQUA + "This Plugin is absolutely useless right now");
+			player.sendMessage(ChatColor.AQUA + "This Plugin is awesome! You will see |:>");
 		}
 		else
 		{
+			this.plugin.logDebug(this.plugin.getDescription().getFullName() + ": Permission denied!");
 			player.sendMessage(ChatColor.RED + "You do not have permission for this command!");
 		}
 	}
@@ -155,8 +158,10 @@ public class Commands
 	//Shows help
 	public boolean CommandHelp(Player player)
 	{
+		this.plugin.logDebug(this.plugin.getDescription().getFullName() + ": Checking for permissions..");
 		if (player.hasPermission("hq.help"))
 		{
+			this.plugin.logDebug(this.plugin.getDescription().getFullName() + ": Permission granted!");
 			if (player == null)
 			{
 				this.plugin.log(ChatColor.WHITE + "/hq" + ChatColor.AQUA + " - Show basic info");
@@ -186,17 +191,20 @@ public class Commands
 		}
 		else
 		{
+			this.plugin.logDebug(this.plugin.getDescription().getFullName() + ": Permission denied!");
 			player.sendMessage(ChatColor.RED + "You do not have permission for this command!");
 		}
-		
+		this.plugin.logDebug(this.plugin.getDescription().getFullName() + ": Return!");
 		return true;
 	}	
 	
 	//Does things
 	private void CommandAction(Player player, String[] args)
 	{
+		this.plugin.logDebug(this.plugin.getDescription().getFullName() + ": Checking for permissions..");
 		if (player.hasPermission("hq.action"))
 		{			
+			this.plugin.logDebug(this.plugin.getDescription().getFullName() + ": Permission granted!");
 			if (!plugin.getQuestManager().isDoingQuest(player))
 			{
 				player.sendMessage(ChatColor.RED + "You are not on any quest!");
@@ -207,6 +215,7 @@ public class Commands
 		}
 		else
 		{
+			this.plugin.logDebug(this.plugin.getDescription().getFullName() + ": Permission denied!");
 			player.sendMessage(ChatColor.RED + "You do not have permission for this command!");
 		}
 	}
@@ -214,8 +223,10 @@ public class Commands
 	//Reloads the config
 	public void CommandReload(Player player)
 	{
+		this.plugin.logDebug(this.plugin.getDescription().getFullName() + ": Checking for permissions..");
 		if (player.hasPermission("hq.reload"))
 		{
+			this.plugin.logDebug(this.plugin.getDescription().getFullName() + ": Permission granted!");
 			plugin.reloadSettings();
 			plugin.loadSettings();
 			plugin.getQuestManager().load();
@@ -231,6 +242,7 @@ public class Commands
 		}
 		else
 		{
+			this.plugin.logDebug(this.plugin.getDescription().getFullName() + ": Permission denied!");
 			player.sendMessage(ChatColor.RED + "You do not have permission for this command!");
 		}
 	}
@@ -238,12 +250,17 @@ public class Commands
 	//Starts the quest
 	public void CommandStartQuest(Player player)
 	{
+		this.plugin.logDebug(this.plugin.getDescription().getFullName() + ": Checking for permissions..");
 		if (player.hasPermission("hq.startquest"))
 		{
+			this.plugin.logDebug(this.plugin.getDescription().getFullName() + ": Permission granted!");
+			this.plugin.logDebug(this.plugin.getDescription().getFullName() + ": Trying to say that the quest has started as an title.");
 			HardcoreQuest.sendTitle(player,10,20,10,"&a&k>&r&8The Quest has&r&a&k<","&a&k>&r&8STARTED!&r&a&k<");
+			this.plugin.logDebug(this.plugin.getDescription().getFullName() + ": Should have said that the quest has started as an title.");
 		}
 		else
 		{
+			this.plugin.logDebug(this.plugin.getDescription().getFullName() + ": Permission denied!");
 			player.sendMessage(ChatColor.RED + "You do not have permission for this command!");
 		}
 	}
