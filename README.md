@@ -1,5 +1,5 @@
 # Hardcore-Quest
-![alt tag](https://raw.githubusercontent.com/DoggyCraftDK/Hardcore-Quest/master/img/Hardcorequest.png)
+![Alt text](/relative/img/Hardcorequest.png?raw=true)
 A plugin to Minecraft. To survive you gotta have wisdom.
 
 ## To-Do
