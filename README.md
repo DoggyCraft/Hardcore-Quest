@@ -1,5 +1,5 @@
 # Hardcore-Quest
-![Alt text](/img/Hardcorequest.png?raw=true)
+![Alt text](/img/Harcorequest.png?raw=true)
 A plugin to Minecraft. To survive you gotta have wisdom.
 
 ## To-Do
