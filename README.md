@@ -1,14 +1,9 @@
 ![Alt text](/img/Harcorequest.png?raw=true "Hardcore Quest")
-A plugin to Minecraft. To survive you gotta have wisdom.
+¿Quién es fuckboi?
 
 ## To-Do
-* Text quiz
-* Countdown to answer (XP Bar), and when it reaches 0, you die.
-* Teleport to an (generated?) room. (Maybe a forest?)
-* Mute chat
-* Soundeffects
+* ?
 
 ### Contributers
-* Draco (Plugin base code & more)
-* Doggy (More code that needs to be specified)
-* Fido (Fucked up the code)
+* Zendrex (Hosting and base code)
+* Fido/Hero (GitHub and alot of freaking updates, k?)
